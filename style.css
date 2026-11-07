@@ -8,3 +8,12 @@
 .card .tag{display:inline-block;max-width:100%;margin-right:5px;margin-bottom:3px;line-height:1.35}.tag.collab{color:#a9d3ff}.tag.metal{color:#c6c2b6}.card .sku{margin-top:7px}
 .edit-tags{border-top:1px solid #353d47;border-bottom:1px solid #353d47;padding:12px 0;margin:12px 0}.edit-tags summary{color:#d5bd95;cursor:pointer;font-size:13px}.edit-tags label{display:flex;flex-direction:column;gap:5px;color:#c5cbd1;font-size:11px;margin:8px 0}.edit-tags select{max-width:260px;width:100%;background:#111820;border:1px solid #48515e;border-radius:6px;color:#fff;padding:9px}
 @media(max-width:620px){.advanced-panel>summary{padding:12px;gap:6px}.advanced-inner{padding:3px 11px 13px}.facet-list{gap:6px}.facet-name{font-size:11px;padding:5px 7px}.facet-chip button{min-width:30px}.filter-preset-row{gap:7px}.filter-preset-row .secondary{font-size:11px}.filter-extra input[type=number]{max-width:130px}}
+
+/* VERSION 3: visitor switch and flexible page-size controls */
+.page-size-label,.custom-size-label{display:flex;flex-direction:column;gap:5px;color:#d5d8de;font-size:11px;font-weight:700;min-width:145px;flex:1 1 150px}
+.page-size-label select,.custom-size-label input{min-width:0;width:100%;font-weight:400}
+.price-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+.switch-mode{padding:7px 9px;font-size:10px;letter-spacing:.06em;white-space:nowrap}
+.show-more{order:9;flex-basis:100%;max-width:400px;border-color:#b9975c;color:#f5d9a7}
+#app[data-mode="guest"] .price-row{justify-content:flex-end}
+@media(max-width:620px){.page-size-label,.custom-size-label{min-width:145px}.mark{white-space:normal;line-height:1.4}.switch-mode{font-size:9px;padding:7px 8px}.count-pill{padding:7px 8px}}
