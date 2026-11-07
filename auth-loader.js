@@ -1,0 +1,11 @@
+(()=>{'use strict';const $=id=>document.getElementById(id);let started=false;
+function open(type){if(started)return;started=true;window.PANDORA_MODE=type;
+const guest=type==='visitor';
+if(guest){$('priceControls')?.remove();document.querySelectorAll('#sort option[value="priceUp"],#sort option[value="priceDown"]').forEach(x=>x.remove());const sub=document.querySelector('.subhead p');if(sub)sub.textContent='126 PDF pages · 7,806 products · Supplier product codes';const help=document.querySelector('.subhead .eyebrow');if(help)help.textContent='VERSION 3 · GUEST COLLECTION';}
+else{const sub=document.querySelector('.subhead p');if(sub)sub.textContent='126 PDF pages · 7,806 items · Supplier prices and identifiers';const help=document.querySelector('.subhead .eyebrow');if(help)help.textContent='VERSION 3 · OWNER COLLECTION';}
+try{sessionStorage.setItem('pandoraAccessModeV3',type)}catch(_){}
+$('authError').textContent='Opening catalog…';const data=document.createElement('script');data.src=(guest?'public-data.js':'data.js')+'?v=3';data.onload=()=>{const app=document.createElement('script');app.src='app.js?v=3';app.onload=()=>{$('pw').value=guest?'yes':'no';$('authForm').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}))};app.onerror=()=>{$('authError').textContent='Could not load the catalog app.'};document.body.appendChild(app)};data.onerror=()=>{$('authError').textContent='Could not load product information.'};document.body.appendChild(data)}
+$('authForm').addEventListener('submit',e=>{e.preventDefault();if(started)return;const code=$('pw').value.trim().toLowerCase();if(code==='no')open('priced');else if(code==='yes')open('visitor');else{$('authError').textContent='Incorrect access code';$('pw').select()}});
+$('switchMode').addEventListener('click',()=>{try{sessionStorage.removeItem('pandoraAccessModeV3');sessionStorage.removeItem('pandoraEntered')}catch(_){}window.location.reload()});
+try{const previous=sessionStorage.getItem('pandoraAccessModeV3');if(previous==='priced'||previous==='visitor')open(previous)}catch(_){}
+})();
