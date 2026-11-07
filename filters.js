@@ -24,7 +24,7 @@ const lookup={}; for(const [collab,codes] of Object.entries(VERIFIED))for(const 
 const clean=s=>String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'').replace(/CO(?=[0123456789]|$)/g,'C0');
 let overrides={};try{overrides=JSON.parse(localStorage.getItem('pandoraTagOverrides')||'{}')}catch(_){}
 const cache=new Map();
-function getType(x){let p=x[1],r=x[2],c=clean(x[4]);if(p===1)return 'Packaging';if(p>=15&&p<=23||/^PAN\d|^PSE/.test(c))return 'Bundles / Sets';
+function getType(x){let p=x[1],r=x[2],c=clean(x[4]);if(p===1)return 'Packaging';if(p>=15&&p<=23)return 'Bundles / Sets';
 if(p>=2&&p<=14)return 'Bracelets';
 if(p===75&&r>=6||p===76&&r<=6)return 'Safety Chains';
 if(p===76&&r===7||p===77||p===78||p===79&&r<8)return 'Clips / Clasps';
